@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href = "style.css">
+</head>
+
+<body>
+    <div class="container"></div>
+</body>
+
+<script>
+    function turnsBlack(e) {
+        e.target.style.cssText = 'background-color: black';
+    }
+    function drawPixel(column, row) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixels');
+        pixel.addEventListener('mouseover', turnsBlack);
+        container.appendChild(pixel);
+        pixel.style.cssText = `height: ${Math.floor(800/canvasSize)}px`;
+    }
+    const canvasSize = 75;
+    let container = document.querySelector('.container');
+    container.style.cssText = `grid-template-columns: repeat(${canvasSize}, 1fr)`;
+    for (let i = 0; i < canvasSize*canvasSize; i++) {
+        drawPixel(i%canvasSize +1, i/canvasSize);
+    }
+</script>
+
+</html>
